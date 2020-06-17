@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/cart_card.dart';
 import '../pages/sign_in_page.dart';
+import 'package:provider/provider.dart';
+import '../model/cart.dart';
 class OrderPage extends StatefulWidget {
  
   @override
@@ -10,6 +12,7 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
     return  Scaffold(
       appBar: AppBar(
         title: Text('Your Food Cart', style: TextStyle(color: Colors.black),textAlign: TextAlign.center,),
@@ -18,12 +21,13 @@ class _OrderPageState extends State<OrderPage> {
         elevation: 0,
       ),
           body: Container(
-          child: ListView(
+          child: ListView.builder(
+            itemCount: cart.items.length,
             scrollDirection: Axis.vertical,
-            children: <Widget>[
-              CartCard(),
-              CartCard(),
-            ],
+            itemBuilder: (ctx, i) => CartCard(cart.items.values.toList()[i].quantity, cart.items.values.toList()[i].price, cart.items.values.toList()[i].title, cart.items.values.toList()[i].id),
+              // CartCard(),
+              // CartCard(),
+            
           ),
         
       ),
@@ -36,7 +40,7 @@ class _OrderPageState extends State<OrderPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text('Cart Total', style: TextStyle(fontSize: 16, color: Colors.grey[600])),
-                      Text('22.0', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                      Text('${cart.total.toString()}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
                   ],),
                   
                   SizedBox(height: 5),
@@ -59,7 +63,7 @@ class _OrderPageState extends State<OrderPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text('Sub Total',style: TextStyle(fontSize: 16, color: Colors.grey[600])),
-                      Text('25.5',style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                      Text(cart.subTotal.toString(),style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
                   ],),
                   Container(
                     height: 40,
