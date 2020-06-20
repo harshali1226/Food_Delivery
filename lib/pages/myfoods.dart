@@ -32,7 +32,11 @@ class _MyFoodsState extends State<MyFoods> {
             mainAxisSpacing: 10,
             childAspectRatio: 3/2
             ),
-          itemBuilder: (ctx, i) => MyFoodsItems(categories[i].id, categories[i].categoryName, categories[i].imagePath)
+          itemBuilder: (ctx, i) => MyFoodsItems(
+            categories[i].id,
+            categories[i].price,
+            categories[i].categoryName,
+            categories[i].imagePath)
           ),
       ),
     );

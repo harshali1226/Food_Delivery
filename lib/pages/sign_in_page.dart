@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../pages/sign_up_page.dart';
+import '../model/orders.dart';
+import 'package:provider/provider.dart';
+import '../model/cart.dart';
+import '../pages/orders_page.dart';
 class SignIn extends StatefulWidget {
   static const routeName = '/signin';
   @override
@@ -13,6 +17,7 @@ class _SignInState extends State<SignIn> {
   
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       body: Container(
@@ -67,7 +72,12 @@ class _SignInState extends State<SignIn> {
             ),),
             SizedBox(height: 6,),
             GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Provider.of<Orders>(context, listen: false).addOrder(cart.items.values.toList(), cart.subTotal);
+                      cart.clear();
+                      Navigator.of(context).pushNamed(OrdersPage.routeName);
+                      
+                    },
                     child: Container(
                       height: 40,
                       width: double.infinity,
@@ -79,13 +89,15 @@ class _SignInState extends State<SignIn> {
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.blue
                       ),
-                      child: Text('Submit', 
-                      style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold,
-                      ),
+                  
+                        child: Text('Submit', 
+                        style: TextStyle(fontSize: 25, color: Colors.white, fontWeight: FontWeight.bold,
+                        ),
+                        ),
                       ),
                      // SizedBox(height: 10,)
                     ),
-                  ),
+                  
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 60),
                     child: Row(

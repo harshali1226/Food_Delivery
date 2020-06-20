@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/data/category_data.dart';
+import 'package:food_delivery/pages/orders_page.dart';
+import './data/category_data.dart';
+import './model/orders.dart';
 import './pages/myfoods.dart';
 import './pages/sign_up_page.dart';
 import './pages/sign_in_page.dart';
@@ -7,6 +9,7 @@ import './screens/main_screen.dart';
 import 'package:provider/provider.dart';
 import './data/food_data.dart';
 import './model/cart.dart';
+import './pages/orders_page.dart';
 void main() {
   runApp(MyApp());
 }
@@ -16,14 +19,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(
-          value:  Foods(),
+        ChangeNotifierProvider(
+          create: (ctx) =>  Foods(),
         ),
-        ChangeNotifierProvider.value(
-          value:  Cats(),
+        ChangeNotifierProvider(
+          create: (ctx) =>  Cats(),
         ),
-        ChangeNotifierProvider.value(
-          value:  Cart(),
+        ChangeNotifierProvider(
+          create: (ctx) =>  Cart(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) =>  Orders(),
         ),
 
       ],
@@ -37,7 +43,8 @@ class MyApp extends StatelessWidget {
           routes: {
             SignIn.routeName: (ctx) => SignIn(),
             SignUp.routeName: (ctx) => SignUp(),
-            MyFoods.routeName: (ctx) => MyFoods()
+            MyFoods.routeName: (ctx) => MyFoods(),
+            OrdersPage.routeName: (ctx) => OrdersPage(),
           },
         ),
       

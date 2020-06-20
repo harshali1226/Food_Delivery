@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/favorite_page.dart';
-import '../pages/orders_page.dart';
+import '../pages/cart_page.dart';
 import '../pages/profile_page.dart';
 import '../pages/home_page.dart';
 class MainScreen extends StatefulWidget {
@@ -10,7 +10,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   HomePage homePage;
-  OrderPage orderPage;
+  CartPage orderPage;
   ProfilePage profilePage;
   FavoritesPage favoritesPage;
   int currentTabIndex = 0;
@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     super.initState();
     homePage = HomePage();
-    orderPage = OrderPage();
+    orderPage = CartPage();
     profilePage = ProfilePage();
     favoritesPage = FavoritesPage();
     pages = [homePage, orderPage,favoritesPage ,profilePage];
@@ -41,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem> [
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), title: Text('Orders')),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), title: Text('Cart')),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), title: Text('Favorites')),
           BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('Profile'))
         ]

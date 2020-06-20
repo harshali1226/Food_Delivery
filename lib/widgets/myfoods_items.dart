@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import '../model/cart.dart';
 import 'package:provider/provider.dart';
+import '../model/category_model.dart';
+import '../data/category_data.dart';
 class MyFoodsItems extends StatelessWidget {
   final String id;
   final String catName;
   final String imagePath;
-  MyFoodsItems(this.id, this.catName, this.imagePath);
+  final double price;
+  MyFoodsItems(this.id,this.price, this.catName, this.imagePath);
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context, listen: false);
+    final category = Provider.of<Cats>(context, listen: false).items;
     return GridTile(child: InkWell(
       onTap: () {},
       child: Image.asset(imagePath, fit: BoxFit.cover,)
@@ -20,7 +24,7 @@ class MyFoodsItems extends StatelessWidget {
           catName, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)
         ),
         trailing: IconButton(icon: Icon(Icons.shopping_cart),onPressed: () {
-          cart.addItem(id, catName, 65);
+          cart.addItem(id, catName, price, imagePath);
         },),
       ),
       );
