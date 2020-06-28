@@ -10,14 +10,14 @@ class MyFoods extends StatefulWidget {
 }
 
 class _MyFoodsState extends State<MyFoods> {
- 
+  var _showFavorites = true;
   @override
   Widget build(BuildContext context) {
     final loadedCategories = Provider.of<Cats>(context);
     final categories = loadedCategories.items;
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Food', style: TextStyle(color: Colors.black, fontSize: 25,fontWeight: FontWeight.bold),),
+        title: Text('My Food', style: TextStyle(color: Colors.black, fontSize: 25,),),
         centerTitle: true,
         elevation: 10,
         backgroundColor: Colors.white,
@@ -32,13 +32,19 @@ class _MyFoodsState extends State<MyFoods> {
             mainAxisSpacing: 10,
             childAspectRatio: 3/2
             ),
-          itemBuilder: (ctx, i) => MyFoodsItems(
-            categories[i].id,
-            categories[i].price,
-            categories[i].categoryName,
-            categories[i].imagePath)
+          itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
+          
+            // builder: (c) => products[i],s
+            value: categories[i],
+            child: MyFoodsItems(
+              _showFavorites
+                // products[i].id,
+                // products[i].title,
+                // products[i].imageUrl,
+                ),
           ),
       ),
+          )
     );
   }
 }

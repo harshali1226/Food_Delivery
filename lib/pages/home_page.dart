@@ -33,11 +33,9 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget> [
               Text('Frequently bought foods', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed(MyFoods.routeName);
-                },
-                child: Text('View All', style: TextStyle(color: Colors.orangeAccent, fontSize: 18),))
+          
+              Text('View All', style: TextStyle(color: Colors.orangeAccent, fontSize: 18),)
+                
             ]
           ),
           SizedBox(

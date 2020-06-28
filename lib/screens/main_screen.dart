@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import '../pages/favorite_page.dart';
+import 'package:food_delivery/pages/myfoods.dart';
+//import '../pages/favorite_page.dart';
 import '../pages/cart_page.dart';
 import '../pages/profile_page.dart';
 import '../pages/home_page.dart';
 class MainScreen extends StatefulWidget {
+  static const routeName = '/';
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -12,7 +14,8 @@ class _MainScreenState extends State<MainScreen> {
   HomePage homePage;
   CartPage orderPage;
   ProfilePage profilePage;
-  FavoritesPage favoritesPage;
+  MyFoods explorePage;
+ // FavoritesPage favoritesPage;
   int currentTabIndex = 0;
   List<Widget> pages;
   Widget currentPage;
@@ -23,8 +26,9 @@ class _MainScreenState extends State<MainScreen> {
     homePage = HomePage();
     orderPage = CartPage();
     profilePage = ProfilePage();
-    favoritesPage = FavoritesPage();
-    pages = [homePage, orderPage,favoritesPage ,profilePage];
+    explorePage = MyFoods();
+   // favoritesPage = FavoritesPage();
+    pages = [homePage, explorePage ,orderPage,profilePage];
     currentPage = homePage;
   }
   @override
@@ -41,8 +45,8 @@ class _MainScreenState extends State<MainScreen> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem> [
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.search), title: Text('Explore')),
           BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), title: Text('Cart')),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), title: Text('Favorites')),
           BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('Profile'))
         ]
         ),

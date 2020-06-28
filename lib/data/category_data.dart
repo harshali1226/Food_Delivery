@@ -16,7 +16,21 @@ class Cats with ChangeNotifier {
 
  ];
 
+ var _showFavoritesOnly = false;
+
 List<Category> get items {
+  if(_showFavoritesOnly) {
+   return _items.where((prodItem) => prodItem.isFavorite).toList();
+  }
     return [..._items];
+  }
+
+  void showFavoritesOnly() {
+    _showFavoritesOnly = true;
+    notifyListeners();
+  }
+
+  List<Category> get favoriteItems {
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 }

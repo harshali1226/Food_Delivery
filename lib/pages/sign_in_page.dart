@@ -75,7 +75,7 @@ class _SignInState extends State<SignIn> {
                     onTap: () {
                       Provider.of<Orders>(context, listen: false).addOrder(cart.items.values.toList(), cart.subTotal);
                       cart.clear();
-                      Navigator.of(context).pushNamed(OrdersPage.routeName);
+                      Navigator.of(context).pushNamed('/');
                       
                     },
                     child: Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/widgets/imagepick.dart';
 
 class ProfilePage extends StatefulWidget {
   static const routeName = '/profile';
@@ -9,8 +10,16 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Profile'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('My Profile',style: TextStyle(color: Colors.black),textAlign: TextAlign.center,),
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: Container(
+        child: ImagePick()
+      ),
     );
   }
 }
