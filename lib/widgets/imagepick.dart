@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/userProduct_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import './list.dart';
 import '../pages/orders_page.dart';
+import '../pages/edit_page.dart';
 class ImagePick extends StatefulWidget {
   @override
   _ImagePickState createState() => _ImagePickState();
@@ -98,26 +100,31 @@ Navigator.of(context).pop();
               ),
               child: Column(
                 children: <Widget> [
-                  Container(
-                    height: 60,
-                    width: MediaQuery.of(context).size.width,
-                    
-                    child: Card(
-                      elevation: 10,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(UserProductsScreen.routeName);
+                    },
                       child: Container(
-                        margin: EdgeInsets.all(10),
+                      height: 60,
+                      width: MediaQuery.of(context).size.width,
+                      
+                      child: Card(
+                        elevation: 10,
+                        child: Container(
+                          margin: EdgeInsets.all(10),
                 
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget> [
-                          Icon(Icons.person_add),
-                          SizedBox(width: 10,),
-                          Text('Privacy', style: TextStyle(fontSize:16),),
-                          Spacer(),
-                          Icon(Icons.keyboard_arrow_right)
-                        ]
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget> [
+                            Icon(Icons.person_add),
+                            SizedBox(width: 10,),
+                            Text('Manage Products', style: TextStyle(fontSize:16),),
+                            Spacer(),
+                            Icon(Icons.keyboard_arrow_right)
+                          ]
+                      ),
+                        ),),
                     ),
-                      ),),
                   ),
                   GestureDetector(
                     onTap: () {

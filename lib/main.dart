@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/pages/edit_page.dart';
 import 'package:food_delivery/pages/orders_page.dart';
+import 'package:food_delivery/pages/userProduct_page.dart';
 import './data/category_data.dart';
 import './model/orders.dart';
 import './pages/myfoods.dart';
@@ -45,6 +47,8 @@ class MyApp extends StatelessWidget {
             SignUp.routeName: (ctx) => SignUp(),
             MyFoods.routeName: (ctx) => MyFoods(),
             OrdersPage.routeName: (ctx) => OrdersPage(),
+            EditProductScreen.routeName: (ctx) => EditProductScreen(),
+            UserProductsScreen.routeName: (ctx) => UserProductsScreen()
           },
         ),
       

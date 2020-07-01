@@ -24,7 +24,7 @@ class _BoughtFoodsState extends State<BoughtFoods> {
             height: 200,
             width: 370,
             padding: EdgeInsets.symmetric(vertical: 10),
-            child: Image(image: AssetImage(widget.imagePath,),fit: BoxFit.cover
+            child: Image(image: NetworkImage(widget.imagePath,),fit: BoxFit.cover
             ),
           ),
           Positioned(

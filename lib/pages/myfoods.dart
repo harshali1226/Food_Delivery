@@ -3,6 +3,7 @@ import 'package:food_delivery/data/category_data.dart';
 import 'package:food_delivery/model/category_model.dart';
 import 'package:food_delivery/widgets/myfoods_items.dart';
 import 'package:provider/provider.dart';
+import '../pages/edit_page.dart';
 class MyFoods extends StatefulWidget {
   static const routeName = '/myfoods';
   @override
@@ -21,6 +22,11 @@ class _MyFoodsState extends State<MyFoods> {
         centerTitle: true,
         elevation: 10,
         backgroundColor: Colors.white,
+        actions: <Widget>[
+          IconButton(icon: const Icon(Icons.add, color: Colors.black,), onPressed: () {
+            Navigator.of(context).pushNamed(EditProductScreen.routeName);
+          })
+        ],
       ),
           body: Container(
             margin: EdgeInsets.symmetric(horizontal: 5, vertical: 25),
